@@ -15,7 +15,7 @@ def insertData(request):
         email=request.POST.get('email')
         age=request.POST.get('age')
         gender=request.POST.get('gender')
-        print(name,email,age,gender)
+        # print(name,email,age,gender)
         query=Student(name=name,email=email,age=age,gender=gender)
         query.save()
         messages.info(request,"Data inserted successfully")
