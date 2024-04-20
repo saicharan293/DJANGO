@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genre</title>
+</head>
+<body>
+    {% comment %} <h2>genere html page </h2> {% endcomment %}
+    {% block content %}
+    {% for gen in all_collections %}
+    <div align='center'>   
+        <img src="{{gen.collCover}}" height='200' width='200' alt="">
+        <h2><a href="/genre/{{gen.id}}">{{gen.collection_name}}</a></h2>
+        <h3>{{gen.description}}</h3><br>
+    </div>
+    {% endfor %}
+    {% endblock content %}
+</body>
+</html>

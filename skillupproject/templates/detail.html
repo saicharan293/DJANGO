@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% comment %} <h3>Detail.html page</h3> {% endcomment %}
+    {% block content %}
+    
+    {% for pen in pitem %}
+    <div align='center'>   
+        <img src="{{pen.pieceCover}}" height='200' width='200' alt="">
+        <h2>{{pen.title}} ~ {{pen.artist}}</a></h2>
+        <h3>{{pen.typ}}</h3><br>
+        <h3>{{pen.year}}</h3>
+    </div>
+    {% endfor %}
+    {% endblock  %}
+</body>
+</html>
