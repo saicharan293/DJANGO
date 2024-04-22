@@ -22,9 +22,9 @@
         <div class="col-md-5">
           <h2 class="text-white bg-dark p-2">Insert student details</h2>
           <br />
-          <form action="/insert" method="post">
+          <form action="/insert" method="post" >
             {% csrf_token %}
-            <div class="form-group">
+            <div class="form-group " >
               <input
                 type="text"
                 name="name"
@@ -33,6 +33,7 @@
                 placeholder="Enter the student name"
                 required
               />
+              
             </div>
             <div class="form-group">
               <input
@@ -53,6 +54,7 @@
                 placeholder="Enter the student age"
                 required
               />
+              
             </div>
             <div class="form-group col-md-4">
               <label for="gender">Gender</label>
@@ -75,7 +77,7 @@
             </div>
           </form>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7" style="position: relative;">
           <h2 class="text-center text-white bg-dark p-2">Student details</h2>
           {% for message in messages %}
           <div
@@ -133,7 +135,32 @@
               {% endfor %}
             </tbody>
           </table>
+          
+          <nav aria-label="..." style="position: absolute;
+          bottom: -20px;
+          left: 35%;
+          right: 0px;">
+            <ul class="pagination" >
+              {% if data.has_previous %}
+              <li class="page-item ">
+                <a class="page-link" href="/?page={{data.previous_page_number}}">Previous</a>
+              </li>
+              {% endif %}
+              {% for page in data.paginator.page_range %}
+              <li class='page-item {% if page == data.number %}active{% endif %}'>
+                <a class='page-link' href="?page={{page}}">{{ page }}</a>
+              </li>
+  
+              {% endfor %}
+              {% if data.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="/?page={{data.next_page_number}}">Next</a>
+              </li>
+              {% endif %}
+            </ul>
+          </nav>
         </div>
+
       </div>
     </div>
     <script
