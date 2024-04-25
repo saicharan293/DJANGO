@@ -1,11 +1,25 @@
-from django.shortcuts import get_object_or_404, render,redirect
+from django.shortcuts import render,redirect
 from .models import Student
 from django.contrib import messages
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
-    data=Student.objects.all()
+    query = request.GET.get('q')
+    sort_column = request.GET.get('sort')
+    sort_order = request.GET.get('order', 'asc')
+    if query:
+        # q=request.GET['q']
+        data=Student.objects.filter(Q(name__icontains=query))
+    else:
+        data=Student.objects.all()
+
+    if sort_column:
+        if sort_order == 'asc':
+            data = data.order_by(sort_column)
+        else:
+            data = data.order_by('-' + sort_column)
     page=request.GET.get('page',1)
     paginator=Paginator(data,3)
     try:
