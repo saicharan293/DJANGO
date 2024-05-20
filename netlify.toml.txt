@@ -1,0 +1,2 @@
+ [build] 
+ command = "python manage.py collectstatic --noinput" publish = "C:\Users\samcy\OneDrive\Desktop\ML\Django\DJANGO\CRUD\project\templates"

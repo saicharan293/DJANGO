@@ -8,6 +8,7 @@ def meeting_details_view(request,id):
     context={
         'title':m_id.title,
         'date':m_id.date,
+        
         'start_time':m_id.start_time,
         'room':m_id.room
     }
